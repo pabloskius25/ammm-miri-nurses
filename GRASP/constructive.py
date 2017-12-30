@@ -10,9 +10,8 @@ def construct(data, possible_schedules, alpha):
     sol = []
     demand = data["demand"]
     n_nurses = data["nNurses"]
-    n = 0
 
-    while n < n_nurses:
+    for n in range(0, n_nurses):
         compute_greedy_cost(possible_schedules, sol, demand)
         possible_schedules = sorted(possible_schedules, key=itemgetter('gc'),
                                     reverse=True)
@@ -26,7 +25,7 @@ def construct(data, possible_schedules, alpha):
         sol.append(chosen)
         if is_solution_feasible(sol, demand):
             return sol, True
-        ++n
+
     return sol, False
 
 

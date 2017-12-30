@@ -3,6 +3,16 @@ import copy
 import constraints
 
 
+def deep_local(data, original_solution):
+    print("Starting deep local search")
+    sol = original_solution
+    improved = True
+    while improved:
+        sol, improved = local(data, sol)
+
+    return sol
+
+
 def local(data, original_solution):
     print("Starting local search...")
     demand = data["demand"]
@@ -15,9 +25,9 @@ def local(data, original_solution):
 
         if reassign_schedule_to_someone_else(data, new_solution,
                                              schedule_to_reassign, demand):
-            return new_solution
+            return new_solution, True
 
-    return original_solution
+    return original_solution, False
 
 
 def reassign_schedule_to_someone_else(data, new_solution, schedule_to_reassign,
@@ -39,6 +49,9 @@ def reassign_schedule_to_someone_else(data, new_solution, schedule_to_reassign,
 
 def try_to_reassign_hour(data, hour, new_solution):
     for nurse in range(0, len(new_solution)):
+        # Check if the candidate nurse is already working at that hour
+        if new_solution[nurse][hour] == 1:
+            continue
         candidate_schedule = copy.deepcopy(new_solution[nurse])
         candidate_schedule[hour] = 1
         if constraints.check_constraints(candidate_schedule, data):
