@@ -1,4 +1,3 @@
-# file name: instances/instance_XX.dat
 instancesDirectory = instances;
 fileNamePrefix = example;
 fileNameExtension = dat;
