@@ -1,6 +1,7 @@
 import sys
 import json
 import math
+import time
 import matplotlib.pyplot as plt
 
 import BRKGA as brkga # BRKGA framework (problem independent)
@@ -25,6 +26,7 @@ if __name__ == "__main__":
     else:
         with open(sys.argv[1]) as config_file:
             with open(sys.argv[2]) as data_file:
+                t = time.time()
                 problem = json.load(data_file)
                 config = json.load(config_file)
                 # initializations
@@ -70,8 +72,9 @@ if __name__ == "__main__":
                 plt.xlabel('number of generations')
                 plt.ylabel('Fitness of best individual')
                 print(evol)
-                plt.axis([0, len(evol), 0, (problem['nHours'] *100) * problem['nNurses'] +  (chrLength) +5])
+                plt.axis([0, len(evol), 0, (1000) * problem['nNurses'] +  (chrLength) +5])
                 plt.show()
-
+                print(time.time() - t)
                 print bestIndividual
                 printSolutiuon(bestIndividual['solution'], problem['nNurses'], problem['nHours'])
+                

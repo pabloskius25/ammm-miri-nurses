@@ -1,5 +1,5 @@
 {
-    "numIndividuals": 10, 
+    "numIndividuals": 1000, 
     "maxNumGen":100, 
     "eliteProp":0.1,
     "mutantProp":0.2,

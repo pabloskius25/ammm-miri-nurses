@@ -44,9 +44,9 @@ def decoder_assignment(problem,chromosome):
             if demand[h] > numNurses:
                 return None, sys.maxint 
             elif not startedTurn:
-                sp = 0.6 * chromosome[(n*hours) + h]
-                dm = sum(demand[h: hours-1])/ (1. *numNurses * (hours-h))
-                sp += 0.4 * (dm)
+                sp = 0.5 * chromosome[(n*hours) + h]
+                dm = demand[h]/ (1. *numNurses )
+                sp += 0.5 * (dm)
                 if sp > 0.5:
                     workingNurses += 1
                     startedTurn = True
@@ -59,20 +59,43 @@ def decoder_assignment(problem,chromosome):
             elif isWorking:
                 sp = 0.3 * chromosome[(n*hours) + h]
                 dm = sum(demand[h: hours-1]) / (1. * numNurses * (hours-h))
-                sp += 0.2 * (1 - dm )
-                sp += (0.1 if workedHours > minHours else 0)
+                sp += 0.2 * (dm)
                 solution[(n*hours) + h] = 1
-                sp += (0.4  if not constraints.check_constraints(solution[(n*hours): (n*hours) + hours-1], problem) else 0)
+                correct = constraints.check_constraints(solution[(n*hours): (n*hours) + hours-1], problem)
+                sp += (0.5  if not correct  else 0)
                 solution[(n*hours) + h] = 0
+                sp = (sp - 0.5 if workedHours < minHours else sp)
 
                 if sp > 0.8:
-                    isWorking = False
-                    break
+                    if workedHours < minHours:
+                        if (consecWorking + 1) >= maxConsec:
+                            restedPrev = True
+                            consecWorking = 0
+                            presence += 1
+                            continue
+                        restedPrev = False
+                        demand[h] = (demand[h] - 1 if demand[h]>0 else 0)
+                        solution[(n*hours) + h] = 1
+                        consecWorking += 1
+                        workedHours += 1
+                        presence += 1
+                    else:
+                        isWorking = False
+                        break          
+                    
                 elif sp > 0.6 and not restedPrev:
                     restedPrev = True
                     consecWorking = 0
                     presence += 1
                 else:
+                    if (presence + 1) >= maxPresence:
+                        break
+                    if (consecWorking + 1) >= maxConsec:
+                        restedPrev = True
+                        consecWorking = 0
+                        presence += 1
+                        continue
+
                     restedPrev = False
                     demand[h] = (demand[h] - 1 if demand[h]>0 else 0)
                     solution[(n*hours) + h] = 1
@@ -87,8 +110,10 @@ def decoder_assignment(problem,chromosome):
             return None, sys.maxint
 
     if sum(demand) > 0:
+        print("incomplete result with " + str(sum(demand)))
         return None, sys.maxint
-    fitness=(hours *100) * workingNurses +  (sum(solution) - demandedHours)
+    fitness=(1000) * workingNurses +  (sum(solution) - demandedHours)
+    print("Solution with fitness: " + str(fitness))
     return solution, fitness
 
 
