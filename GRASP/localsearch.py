@@ -4,6 +4,7 @@ import constraints
 
 
 def local(data, original_solution):
+    print("Starting local search...")
     demand = data["demand"]
 
     # Try to reassign the schedule of each nurse

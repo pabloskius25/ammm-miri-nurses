@@ -1,0 +1,7 @@
+instancesDirectory = instances;
+fileNamePrefix = instance4;
+fileNameExtension = dat;
+numInstances = 1;
+
+numNurses = 12;
+numHours = 12;

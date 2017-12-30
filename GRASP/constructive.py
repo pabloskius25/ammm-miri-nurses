@@ -5,12 +5,13 @@ import constraints
 import math
 
 
-def construct(data, alpha):
+def construct(data, possible_schedules, alpha):
+    print("Starting constructive...")
     sol = []
     demand = data["demand"]
     n_nurses = data["nNurses"]
     n = 0
-    possible_schedules = create_candidate_schedules(data)
+
     while n < n_nurses:
         compute_greedy_cost(possible_schedules, sol, demand)
         possible_schedules = sorted(possible_schedules, key=itemgetter('gc'),

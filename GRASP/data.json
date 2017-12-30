@@ -1,9 +1,9 @@
 {
-    "nHours": 8,
-    "nNurses": 8,
-    "demand": [0, 3, 3, 5, 3, 2, 2, 2],
-    "minHours": 1,
-    "maxHours": 5,
+    "nHours": 24,
+    "nNurses": 50,
+    "demand": [4, 9, 9, 14, 13, 21, 17, 15, 17, 20, 16, 18, 21, 15, 21, 19, 13, 11, 15, 4, 10, 4, 3, 1],
+    "minHours": 3,
+    "maxHours": 10,
     "maxConsec": 4,
-    "maxPresence": 7
+    "maxPresence": 14
 }
