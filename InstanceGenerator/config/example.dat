@@ -1,0 +1,8 @@
+# file name: instances/instance_XX.dat
+instancesDirectory = instances;
+fileNamePrefix = example;
+fileNameExtension = dat;
+numInstances = 1;
+
+numNurses = 8;
+numHours = 8;
