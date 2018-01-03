@@ -1,0 +1,9 @@
+{
+    "executionTime": 187.49200010299683, 
+    "fitness": 142079, 
+    "maxNumGen": 20, 
+    "nHours": 12, 
+    "nNurses": 150, 
+    "numIndividuals": 100, 
+    "nursesNeeded": 142
+}
