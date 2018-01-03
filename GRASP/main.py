@@ -16,27 +16,22 @@ def grasp(config, data):
 
     possible_schedules = constructive.create_candidate_schedules(data)
 
-    for i in range(0, max_itr):
-        print("Starting iteration " + str(i) + "...")
-
+    for i in range(max_itr):
         alpha = random()
         if i == max_itr - 1:
             alpha = 1
-        print("Alpha: " + str(alpha))
 
         start_time = time.time()
-        sol, feasible = constructive.construct(data, possible_schedules, alpha)
+        sol, feasible = constructive.construct(data, possible_schedules, alpha,
+                                               i)
         total_time_constructive += time.time() - start_time
         if not feasible:
             continue
 
         start_time = time.time()
-        sol, improved = localsearch.local(data, sol)
+        sol = localsearch.local_search(data, sol, i)
         total_time_localsearch += time.time() - start_time
         new_solution_value = get_cost_from_solution(sol)
-
-        if improved:
-            print("Solution improved by local search")
 
         if new_solution_value < best_solution_value:
             best_solution_value = new_solution_value
@@ -46,7 +41,7 @@ def grasp(config, data):
         return None
 
     start_time = time.time()
-    best_solution = localsearch.deep_local(data, best_solution)
+    best_solution = localsearch.deep_local_search(data, best_solution)
     time_deeplocalsearch = time.time() - start_time
     cost = get_cost_from_solution(best_solution)
 
