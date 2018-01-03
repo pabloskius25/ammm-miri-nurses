@@ -1,0 +1,9 @@
+{
+    "nHours": 12,
+    "nNurses": 100,
+    "demand": [18, 22, 38, 56, 57, 74, 49, 63, 47, 42, 32, 10],
+    "minHours": 3,
+    "maxHours": 6,
+    "maxConsec": 5,
+    "maxPresence": 9
+}

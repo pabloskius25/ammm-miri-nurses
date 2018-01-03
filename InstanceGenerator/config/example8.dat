@@ -1,7 +1,7 @@
 instancesDirectory = instances;
-fileNamePrefix = example;
+fileNamePrefix = instance8;
 fileNameExtension = dat;
 numInstances = 1;
 
-numNurses = 8;
-numHours = 8;
+numNurses = 250;
+numHours = 12;

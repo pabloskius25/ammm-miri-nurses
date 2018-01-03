@@ -4,4 +4,4 @@ fileNameExtension = dat;
 numInstances = 1;
 
 numNurses = 50;
-numHours = 24;
+numHours = 12;

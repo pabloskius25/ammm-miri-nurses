@@ -3,5 +3,5 @@ fileNamePrefix = instance3;
 fileNameExtension = dat;
 numInstances = 1;
 
-numNurses = 11;
-numHours = 11;
+numNurses = 100;
+numHours = 24;
