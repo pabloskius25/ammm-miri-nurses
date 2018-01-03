@@ -51,13 +51,14 @@ def grasp(config, data):
     cost = get_cost_from_solution(best_solution)
 
     result = {
-                "solution": best_solution,
                 "fitness": get_fitness_from_solution(data, best_solution,
                                                      cost),
-                "value": cost,
+                "nursesNeeded": cost,
                 "constructiveTime": total_time_constructive,
                 "localSearchTime": total_time_localsearch,
-                "deepLocalSearchTime": time_deeplocalsearch
+                "deepLocalSearchTime": time_deeplocalsearch,
+                "nNurses": data['nNurses'],
+                "nHours": data['nHours']
              }
 
     return result
@@ -77,19 +78,22 @@ def get_fitness_from_solution(data, sol, value):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        sys.exit('Usage: python main.py <configurationFile> <dataFile> ' +
-                 '<solutionFile>')
+    if len(sys.argv) != 2:
+        sys.exit('Usage: python main.py <configurationFile>')
     else:
         with open(sys.argv[1]) as config_file:
-            with open(sys.argv[2]) as data_file:
-                start_time = time.time()
-                solution = grasp(json.load(config_file), json.load(data_file))
+            global_config = json.load(config_file)
+            for instance in global_config:
+                with open(instance['dataFile']) as data_file:
+                    start_time = time.time()
+                    solution = grasp(instance['config'], json.load(data_file))
 
-                if solution is None:
-                    sys.exit('Solution not found')
+                    if solution is None:
+                        solution = {
+                            "error": "No solution found"
+                        }
 
-                solution["executionTime"] = time.time() - start_time
-                with open(sys.argv[3], 'w') as solution_file:
-                    json.dump(solution, solution_file, sort_keys=True,
-                              indent=4)
+                    solution["executionTime"] = time.time() - start_time
+                    with open(instance['outputFile'], 'w') as solution_file:
+                        json.dump(solution, solution_file, sort_keys=True,
+                                  indent=4)

@@ -70,40 +70,41 @@ def solve_brkga(problem, config):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        sys.exit('Usage: python main.py <configurationFile> <dataFile>' +
-                 '<solutionFile>')
+    if len(sys.argv) != 2:
+        sys.exit('Usage: python main.py <configurationFile>')
     else:
         with open(sys.argv[1]) as config_file:
-            with open(sys.argv[2]) as data_file:
-                problem = json.load(data_file)
-                config = json.load(config_file)
+            global_config = json.load(config_file)
+            for instance in global_config:
+                with open(instance['dataFile']) as data_file:
+                    problem = json.load(data_file)
+                    config = instance['config']
 
-                start_time = time.time()
-                bestIndividual, evol = solve_brkga(problem, config)
+                    start_time = time.time()
+                    bestIndividual, evol = solve_brkga(problem, config)
 
-                chrLength = decoder.getChromosomeLength(problem)
+                    chrLength = decoder.getChromosomeLength(problem)
 
-                plt.plot(evol)
-                plt.xlabel('number of generations')
-                plt.ylabel('Fitness of best individual')
-                plt.axis([0, len(evol), 0, (1000) * problem['nNurses'] +
-                         (chrLength) + 5])
-                # plt.imsave(sys.argv[3] + ".png")
+                    plt.plot(evol)
+                    plt.xlabel('number of generations')
+                    plt.ylabel('Fitness of best individual')
+                    plt.axis([0, len(evol), 0, (1000) * problem['nNurses'] +
+                             (chrLength) + 5])
+                    # plt.imsave(sys.argv[3] + ".png")
 
-                total_time = time.time() - start_time
-                numIndividuals = int(config['numIndividuals'])
-                maxNumGen = int(config['maxNumGen'])
-                solution = {
-                    "nursesNeeded": bestIndividual['fitness']/1000,
-                    "fitness": bestIndividual['fitness'],
-                    "executionTime": total_time,
-                    "numIndividuals": numIndividuals,
-                    "maxNumGen": maxNumGen,
-                    "nNurses": problem['nNurses'],
-                    "nHours": problem['nHours']
-                }
+                    total_time = time.time() - start_time
+                    numIndividuals = int(config['numIndividuals'])
+                    maxNumGen = int(config['maxNumGen'])
+                    solution = {
+                        "nursesNeeded": bestIndividual['fitness']/1000,
+                        "fitness": bestIndividual['fitness'],
+                        "executionTime": total_time,
+                        "numIndividuals": numIndividuals,
+                        "maxNumGen": maxNumGen,
+                        "nNurses": problem['nNurses'],
+                        "nHours": problem['nHours']
+                    }
 
-                with open(sys.argv[3], 'w') as solution_file:
-                    json.dump(solution, solution_file, sort_keys=True,
-                              indent=4)
+                    with open(instance['outputFile'], 'w') as solution_file:
+                        json.dump(solution, solution_file, sort_keys=True,
+                                  indent=4)
