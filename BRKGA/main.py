@@ -63,7 +63,7 @@ def solve_brkga(problem, config):
 
         population = elite + crossover + mutants
 
-    population = decoder.decode(population, problem, 'Last Generation')
+    population = decoder.decode(population, problem,  'Generation X')
     bestIndividual = brkga.getBestFitness(population)
 
     return bestIndividual, evol
@@ -77,6 +77,7 @@ if __name__ == "__main__":
             global_config = json.load(config_file)
             for instance in global_config:
                 with open(instance['dataFile']) as data_file:
+                    print('\n File ' + str(instance['dataFile']) + '\n')
                     problem = json.load(data_file)
                     config = instance['config']
 

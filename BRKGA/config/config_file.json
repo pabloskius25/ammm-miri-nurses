@@ -1,25 +1,224 @@
 [{
-        "dataFile": "../InstanceGenerator/instances/instance_0.json",
-        "ouputFile" : "solutions/solution0_100_5.json",
+        "dataFile": "../InstanceGenerator/instances/instance0_0.json",
+        "outputFile" : "solutions/solution0_100_20.json",
         "config":{
             "numIndividuals": 100,
-            "maxNumGen":5,
+            "maxNumGen":20,
             "eliteProp":0.1,
             "mutantProp":0.2,
             "inheritanceProb" :0.7
         }
     },
     {
-        "dataFile": "../InstanceGenerator/instances/instance_1.json",
-        "ouputFile" : "solutions/solution1_100_5.json",
+        "dataFile": "../InstanceGenerator/instances/instance0_0.json",
+        "outputFile" : "solutions/solution0_100_30.json",
         "config":{
             "numIndividuals": 100,
-            "maxNumGen":5,
+            "maxNumGen":30,
             "eliteProp":0.1,
             "mutantProp":0.2,
             "inheritanceProb" :0.7
         }
-} ]
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance1_0.json",
+        "outputFile" : "solutions/solution1_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance1_0.json",
+        "outputFile" : "solutions/solution1_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance2_0.json",
+        "outputFile" : "solutions/solution2_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance2_0.json",
+        "outputFile" : "solutions/solution2_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance3_0.json",
+        "outputFile" : "solutions/solution3_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance3_0.json",
+        "outputFile" : "solutions/solution3_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance4_0.json",
+        "outputFile" : "solutions/solution4_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance4_0.json",
+        "outputFile" : "solutions/solution4_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance5_0.json",
+        "outputFile" : "solutions/solution5_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance5_0.json",
+        "outputFile" : "solutions/solution5_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance6_0.json",
+        "outputFile" : "solutions/solution6_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance6_0.json",
+        "outputFile" : "solutions/solution6_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance7_0.json",
+        "outputFile" : "solutions/solution7_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance7_0.json",
+        "outputFile" : "solutions/solution7_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance8_0.json",
+        "outputFile" : "solutions/solution8_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance8_0.json",
+        "outputFile" : "solutions/solution8_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance9_0.json",
+        "outputFile" : "solutions/solution9_100_20.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":20,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance9_0.json",
+        "outputFile" : "solutions/solution9_100_30.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":30,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    }
+]
 
 
 
