@@ -1,6 +1,6 @@
 {
-    "numIndividuals": 1000, 
-    "maxNumGen":100, 
+    "numIndividuals": 50,
+    "maxNumGen":2,
     "eliteProp":0.1,
     "mutantProp":0.2,
     "inheritanceProb" :0.7

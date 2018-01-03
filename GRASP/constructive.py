@@ -1,5 +1,4 @@
 import numpy as np
-from operator import itemgetter
 import random
 import constraints
 import math
@@ -13,13 +12,8 @@ def construct(data, possible_schedules, alpha):
     demand = data["demand"]
     n_nurses = data["nNurses"]
 
-    for n in range(0, n_nurses):
+    for n in range(n_nurses):
         compute_greedy_cost(possible_schedules, sol, demand)
-
-        # possible_schedules = sorted(possible_schedules, key=itemgetter('gc'),
-        #                             reverse=True)
-        # max_gc = possible_schedules[0]['gc']
-        # min_gc = possible_schedules[len(possible_schedules)-1]['gc']
 
         min_gc = sys.maxint
         max_gc = 0
