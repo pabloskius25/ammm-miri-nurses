@@ -1,31 +1,46 @@
 import numpy as np
 import copy
 import constraints
+from progress.bar import ShadyBar
+import main
 
 
 def deep_local(data, original_solution):
-    print("Starting deep local search")
     sol = original_solution
     improved = True
     while improved:
-        sol, improved = local(data, sol)
+        sol, improved = local(data, sol, -1)
 
     return sol
 
 
-def local(data, original_solution):
-    print("Starting local search...")
+def local(data, original_solution, iteration):
     demand = data["demand"]
 
+    message = ('          Deep Local Search' if iteration == -1
+               else '   Local Search iteration ' + str(iteration))
+
+    bar = FancyBar(message, max=len(original_solution),
+                   suffix='%(percent)d%% --> %(fitness_message)s')
+
     # Try to reassign the schedule of each nurse
-    for nurse in range(0, len(original_solution)):
+    for nurse in range(len(original_solution)):
         new_solution = copy.deepcopy(original_solution)
         schedule_to_reassign = original_solution[nurse]
         del new_solution[nurse]
 
         if reassign_schedule_to_someone_else(data, new_solution,
                                              schedule_to_reassign, demand):
+            bar.dynamic_message = "Solution: " + str(main.get_cost_from_solution(new_solution)) + " nurses"
+            bar.index = bar.max
+            bar.update()
+            bar.finish()
             return new_solution, True
+        bar.next()
+
+    bar.dynamic_message = "Solution not improved"
+    bar.next()
+    bar.finish()
 
     return original_solution, False
 
@@ -58,3 +73,11 @@ def try_to_reassign_hour(data, hour, new_solution):
             new_solution[nurse] = candidate_schedule
             return True
     return False
+
+
+class FancyBar(ShadyBar):
+    dynamic_message = ''
+
+    @property
+    def fitness_message(self):
+        return self.dynamic_message

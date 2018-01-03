@@ -4,13 +4,17 @@ import constraints
 import math
 import sys
 from progress.bar import ShadyBar
+import main
 
 
-def construct(data, possible_schedules, alpha):
-    print("Starting constructive...")
+def construct(data, possible_schedules, alpha, iteration):
     sol = []
     demand = data["demand"]
     n_nurses = data["nNurses"]
+
+    bar = FancyBar('Constructive of iteration ' + str(iteration),
+                   max=n_nurses,
+                   suffix='%(percent)d%% --> %(fitness_message)s')
 
     for n in range(n_nurses):
         compute_greedy_cost(possible_schedules, sol, demand)
@@ -31,7 +35,16 @@ def construct(data, possible_schedules, alpha):
         chosen = random.choice(rcl)['schedule']
         sol.append(chosen)
         if is_solution_feasible(sol, demand):
+            bar.dynamic_message = "Solution: " + str(main.get_cost_from_solution(sol)) + " nurses"
+            bar.index = bar.max
+            bar.update()
+            bar.finish()
             return sol, True
+        bar.next()
+
+    bar.dynamic_message = "No Solution"
+    bar.next()
+    bar.finish()
 
     return sol, False
 
@@ -41,8 +54,8 @@ def create_candidate_schedules(data):
     candidate_schedules = []
     max_number = int(math.pow(2, num_hours) - 1)
 
-    bar = ShadyBar('Creating candidates', max=max_number - 1,
-                   suffix='%(percent)d%%')
+    bar = ShadyBar('        Creating candidates', max=max_number - 1,
+                   suffix='%(percent).2f%%')
 
     for i in range(1, max_number):
         candidate = get_schedule_combination(i, num_hours)
@@ -80,3 +93,14 @@ def is_solution_feasible(sol, demand):
         if demand[i] > np.sum(sol_array[:, i]):
             return False
     return True
+
+
+class FancyBar(ShadyBar):
+    dynamic_message = ''
+
+    @property
+    def fitness_message(self):
+        return self.dynamic_message
+
+    def complete_progress(self):
+        self.index = self.max
