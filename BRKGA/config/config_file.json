@@ -1,0 +1,25 @@
+[{
+        "dataFile": "../InstanceGenerator/instances/instance_0.json",
+        "ouputFile" : "solutions/solution0_100_5.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":5,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+    },
+    {
+        "dataFile": "../InstanceGenerator/instances/instance_1.json",
+        "ouputFile" : "solutions/solution1_100_5.json",
+        "config":{
+            "numIndividuals": 100,
+            "maxNumGen":5,
+            "eliteProp":0.1,
+            "mutantProp":0.2,
+            "inheritanceProb" :0.7
+        }
+} ]
+
+
+
