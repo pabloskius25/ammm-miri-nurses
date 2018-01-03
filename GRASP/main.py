@@ -12,11 +12,9 @@ def grasp(config, data):
     best_solution_value = sys.maxint
     best_solution = None
     total_time_constructive = 0
-    total_time_localsearch = 0;
+    total_time_localsearch = 0
 
-    print("Starting candidates creation...")
     possible_schedules = constructive.create_candidate_schedules(data)
-    print("Candidates creation finished...")
 
     for i in range(0, max_itr):
         print("Starting iteration " + str(i) + "...")

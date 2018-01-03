@@ -3,6 +3,8 @@ from operator import itemgetter
 import random
 import constraints
 import math
+import sys
+from progress.bar import ShadyBar
 
 
 def construct(data, possible_schedules, alpha):
@@ -13,10 +15,21 @@ def construct(data, possible_schedules, alpha):
 
     for n in range(0, n_nurses):
         compute_greedy_cost(possible_schedules, sol, demand)
-        possible_schedules = sorted(possible_schedules, key=itemgetter('gc'),
-                                    reverse=True)
-        max_gc = possible_schedules[0]['gc']
-        min_gc = possible_schedules[len(possible_schedules)-1]['gc']
+
+        # possible_schedules = sorted(possible_schedules, key=itemgetter('gc'),
+        #                             reverse=True)
+        # max_gc = possible_schedules[0]['gc']
+        # min_gc = possible_schedules[len(possible_schedules)-1]['gc']
+
+        min_gc = sys.maxint
+        max_gc = 0
+
+        for schedule in possible_schedules:
+            if schedule['gc'] > max_gc:
+                max_gc = schedule['gc']
+            if schedule['gc'] < min_gc:
+                min_gc = schedule['gc']
+
         rcl = []
         for candidate in possible_schedules:
             if candidate['gc'] >= min_gc + alpha * (max_gc - min_gc):
@@ -32,14 +45,21 @@ def construct(data, possible_schedules, alpha):
 def create_candidate_schedules(data):
     num_hours = data["nHours"]
     candidate_schedules = []
+    max_number = int(math.pow(2, num_hours) - 1)
 
-    for i in range(1, int(math.pow(2, num_hours) - 1)):
+    bar = ShadyBar('Creating candidates', max=max_number - 1,
+                   suffix='%(percent)d%%')
+
+    for i in range(1, max_number):
         candidate = get_schedule_combination(i, num_hours)
 
         if constraints.check_constraints(candidate, data):
             candidate_dict = {'schedule': candidate, 'gc': 0}
             candidate_schedules.append(candidate_dict)
 
+        bar.next()
+
+    bar.finish()
     return candidate_schedules
 
 
