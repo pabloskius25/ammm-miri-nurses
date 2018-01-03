@@ -29,7 +29,7 @@ def grasp(config, data):
             continue
 
         start_time = time.time()
-        sol, improved = localsearch.local(data, sol, i)
+        sol = localsearch.local_search(data, sol, i)
         total_time_localsearch += time.time() - start_time
         new_solution_value = get_cost_from_solution(sol)
 
@@ -41,7 +41,7 @@ def grasp(config, data):
         return None
 
     start_time = time.time()
-    best_solution = localsearch.deep_local(data, best_solution)
+    best_solution = localsearch.deep_local_search(data, best_solution)
     time_deeplocalsearch = time.time() - start_time
     cost = get_cost_from_solution(best_solution)
 

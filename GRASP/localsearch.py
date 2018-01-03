@@ -5,23 +5,28 @@ from progress.bar import ShadyBar
 import main
 
 
-def deep_local(data, original_solution):
-    sol = original_solution
-    improved = True
-    while improved:
-        sol, improved = local(data, sol, -1)
-
-    return sol
+def local_search(data, original_solution, iteration):
+    return local(data, original_solution, iteration, 1, 1)[0]
 
 
-def local(data, original_solution, iteration):
+def deep_local_search(data, original_solution):
+    return local(data, original_solution, -1, 5, 5)[0]
+
+
+def local(data, original_solution, iteration, original_depth, depth):
+    if depth == 0:
+        return original_solution, 0
+
     demand = data["demand"]
+    best_sol = None
+    best_improvement = 0
+    best_fitness = 0
 
-    message = ('          Deep Local Search' if iteration == -1
-               else '   Local Search iteration ' + str(iteration))
-
-    bar = FancyBar(message, max=len(original_solution),
-                   suffix='%(percent)d%% --> %(fitness_message)s')
+    if original_depth == depth:
+        message = ('          Deep Local Search' if iteration == -1
+                   else '   Local Search iteration ' + str(iteration))
+        bar = FancyBar(message, max=len(original_solution),
+                       suffix='%(percent)d%% --> %(fitness_message)s')
 
     # Try to reassign the schedule of each nurse
     for nurse in range(len(original_solution)):
@@ -31,18 +36,31 @@ def local(data, original_solution, iteration):
 
         if reassign_schedule_to_someone_else(data, new_solution,
                                              schedule_to_reassign, demand):
-            bar.dynamic_message = "Solution: " + str(main.get_cost_from_solution(new_solution)) + " nurses"
-            bar.index = bar.max
-            bar.update()
+            sol, improvement = local(data, new_solution, iteration,
+                                     original_depth, depth - 1)
+            improvement += 1  # We add the improvement we got in the if clause
+            cost = main.get_cost_from_solution(sol)
+            fitness = main.get_fitness_from_solution(data, sol, cost)
+            if (improvement > best_improvement or
+               (improvement == best_improvement and fitness > best_fitness)):
+                best_sol = sol
+                best_improvement = improvement
+                best_fitness = fitness
+                if original_depth == depth:
+                    bar.dynamic_message = "Solution: " + str(cost) + " nurses"
+        if original_depth == depth:
+            bar.next()
+
+    if best_sol is not None:
+        if original_depth == depth:
             bar.finish()
-            return new_solution, True
+        return best_sol, best_improvement
+    elif original_depth == depth:
+        bar.dynamic_message = "Solution not improved"
         bar.next()
+        bar.finish()
 
-    bar.dynamic_message = "Solution not improved"
-    bar.next()
-    bar.finish()
-
-    return original_solution, False
+    return original_solution, 0
 
 
 def reassign_schedule_to_someone_else(data, new_solution, schedule_to_reassign,
@@ -73,6 +91,21 @@ def try_to_reassign_hour(data, hour, new_solution):
             new_solution[nurse] = candidate_schedule
             return True
     return False
+
+
+def get_best_candidate(tuples, data):
+    best_sol = None
+    best_improvement = 0
+    best_fitness = 0
+    for (sol, improvement) in tuples:
+        cost = main.get_cost_from_solution(sol)
+        fitness = main.get_fitness_from_solution(data, sol, cost)
+        if improvement > best_improvement or (improvement == best_improvement
+           and fitness > best_fitness):
+            best_sol = sol
+            best_improvement = improvement
+            best_fitness = fitness
+    return best_sol, best_improvement
 
 
 class FancyBar(ShadyBar):
