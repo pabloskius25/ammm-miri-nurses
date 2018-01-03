@@ -1,0 +1,144 @@
+[{
+    "dataFile": "../InstanceGenerator/instances/instance0_0.json",
+    "outputFile" : "solutions/solution0_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance0_0.json",
+    "outputFile" : "solutions/solution0_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance1_0.json",
+    "outputFile" : "solutions/solution1_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance1_0.json",
+    "outputFile" : "solutions/solution1_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance2_0.json",
+    "outputFile" : "solutions/solution2_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance2_0.json",
+    "outputFile" : "solutions/solution2_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance3_0.json",
+    "outputFile" : "solutions/solution3_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance3_0.json",
+    "outputFile" : "solutions/solution3_10.json",
+    "config":{
+      "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance4_0.json",
+    "outputFile" : "solutions/solution4_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance4_0.json",
+    "outputFile" : "solutions/solution4_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance5_0.json",
+    "outputFile" : "solutions/solution5_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance5_0.json",
+    "outputFile" : "solutions/solution5_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance6_0.json",
+    "outputFile" : "solutions/solution6_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance6_0.json",
+    "outputFile" : "solutions/solution6_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance7_0.json",
+    "outputFile" : "solutions/solution7_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance7_0.json",
+    "outputFile" : "solutions/solution7_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance8_0.json",
+    "outputFile" : "solutions/solution8_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance8_0.json",
+    "outputFile" : "solutions/solution8_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance9_0.json",
+    "outputFile" : "solutions/solution9_5.json",
+    "config":{
+        "max_grasp_iterations": 5
+    }
+},
+{
+    "dataFile": "../InstanceGenerator/instances/instance9_0.json",
+    "outputFile" : "solutions/solution9_10.json",
+    "config":{
+        "max_grasp_iterations": 10
+    }
+}
+]
+
+
+
