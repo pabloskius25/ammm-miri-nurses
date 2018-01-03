@@ -1,16 +1,15 @@
 
 [{
-    "dataFile": "../InstanceGenerator/instances/instance_0.json",
-    "ouputFile" : "solutions/solution0_10.json",
+    "dataFile": "../InstanceGenerator/instances/instance0_0.json",
+    "outputFile" : "solutions/solution0_10.json",
     "config":{
         "max_grasp_iterations": 10
     }
 },
 {
-    "dataFile": "../InstanceGenerator/instances/instance_1.json",
-    "ouputFile" : "solutions/solution1_10.json",
+    "dataFile": "../InstanceGenerator/instances/instance1_0.json",
+    "outputFile" : "solutions/solution1_10.json",
     "config":{
         "max_grasp_iterations": 10
     }
 } ]
-
