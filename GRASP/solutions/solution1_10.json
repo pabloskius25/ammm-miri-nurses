@@ -1,0 +1,10 @@
+{
+    "constructiveTime": 270.7520000934601, 
+    "deepLocalSearchTime": 2.7869999408721924, 
+    "executionTime": 3222.2969999313354, 
+    "fitness": 44038, 
+    "localSearchTime": 0.19999980926513672, 
+    "nHours": 24, 
+    "nNurses": 50, 
+    "nursesNeeded": 44
+}
