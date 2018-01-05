@@ -80,6 +80,7 @@ if __name__ == "__main__":
             global_config = json.load(config_file)
             for instance in global_config:
                 with open(instance['dataFile']) as data_file:
+                    print('\n File ' + str(instance['dataFile']) + '\n')
                     start_time = time.time()
                     solution = grasp(instance['config'], json.load(data_file))
 

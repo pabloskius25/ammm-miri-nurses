@@ -1,9 +1,9 @@
 {
-    "constructiveTime": 11.551329135894775, 
-    "deepLocalSearchTime": 0.8757150173187256, 
-    "executionTime": 13.384312868118286, 
-    "fitness": 32018, 
-    "localSearchTime": 0.4779982566833496, 
+    "constructiveTime": 5.11899995803833, 
+    "deepLocalSearchTime": 0.026000022888183594, 
+    "executionTime": 6.430999994277954, 
+    "fitness": 32019, 
+    "localSearchTime": 0.3859994411468506, 
     "nHours": 12, 
     "nNurses": 50, 
     "nursesNeeded": 32

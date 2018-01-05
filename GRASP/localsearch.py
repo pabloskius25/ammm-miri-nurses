@@ -10,7 +10,7 @@ def local_search(data, original_solution, iteration):
 
 
 def deep_local_search(data, original_solution):
-    return local(data, original_solution, -1, 5, 5)[0]
+    return local(data, original_solution, -1, 3, 3)[0]
 
 
 def local(data, original_solution, iteration, original_depth, depth):
