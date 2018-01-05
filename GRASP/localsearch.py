@@ -3,6 +3,7 @@ import copy
 import constraints
 from progress.bar import ShadyBar
 import main
+import sys
 
 
 def local_search(data, original_solution, iteration):
@@ -20,7 +21,7 @@ def local(data, original_solution, iteration, original_depth, depth):
     demand = data["demand"]
     best_sol = None
     best_improvement = 0
-    best_fitness = 0
+    best_fitness = sys.maxint
 
     if original_depth == depth:
         message = ('          Deep Local Search' if iteration == -1
@@ -42,7 +43,7 @@ def local(data, original_solution, iteration, original_depth, depth):
             cost = main.get_cost_from_solution(sol)
             fitness = main.get_fitness_from_solution(data, sol, cost)
             if (improvement > best_improvement or
-               (improvement == best_improvement and fitness > best_fitness)):
+               (improvement == best_improvement and fitness < best_fitness)):
                 best_sol = sol
                 best_improvement = improvement
                 best_fitness = fitness
@@ -65,7 +66,7 @@ def local(data, original_solution, iteration, original_depth, depth):
 
 def reassign_schedule_to_someone_else(data, new_solution, schedule_to_reassign,
                                       demand):
-    for hour in range(0, len(schedule_to_reassign)):
+    for hour in range(len(schedule_to_reassign)):
         # Check if the nurse was actually working at that hour
         if schedule_to_reassign[hour] == 0:
             continue
@@ -81,7 +82,7 @@ def reassign_schedule_to_someone_else(data, new_solution, schedule_to_reassign,
 
 
 def try_to_reassign_hour(data, hour, new_solution):
-    for nurse in range(0, len(new_solution)):
+    for nurse in range(len(new_solution)):
         # Check if the candidate nurse is already working at that hour
         if new_solution[nurse][hour] == 1:
             continue

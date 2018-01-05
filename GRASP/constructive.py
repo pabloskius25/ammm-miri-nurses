@@ -80,7 +80,7 @@ def compute_greedy_cost(candidates, sol, demand):
     for candidate in candidates:
         greedy_cost = 0
         schedule = candidate['schedule']
-        for i in range(0, len(schedule)):
+        for i in range(len(schedule)):
             if schedule[i] == 1 and (len(sol_array) == 0 or
                                      np.sum(sol_array[:, i]) < demand[i]):
                 greedy_cost += 1
@@ -89,7 +89,7 @@ def compute_greedy_cost(candidates, sol, demand):
 
 def is_solution_feasible(sol, demand):
     sol_array = np.array(sol)
-    for i in range(0, len(demand)):
+    for i in range(len(demand)):
         if demand[i] > np.sum(sol_array[:, i]):
             return False
     return True
